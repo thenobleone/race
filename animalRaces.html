@@ -1,0 +1,86 @@
+<script>
+//Setup
+  var wackyRacer = [];
+  var names = [];
+  var speeds = [];
+  var focuses = [];
+
+  function Racer(name, speed, focus) {
+    this.name = name;
+    //Values: 0-9
+    this.speed = speed;
+    this.focus = focus;
+    this.report = function () {
+      return this.name + "has speed: " + this.speed;
+    };
+    this.position = 0;
+    this.isFocus = function () {
+      return Math.Floor(Math.random() * 10 + 1) < this.focus;
+    }
+    this.advance = function () {
+      if (this.isFocus()) {
+        this.position += this.speed;
+      }
+    }
+    this.progressReport = function (){
+      return this.name + " is at: " + this.position;
+    }
+  }
+
+//Input
+console.log("Hello and welcome to the wonderful world of Wacky Racers!!");
+console.log("Lets meet the contestants shall we?");
+var racer = prompt("First off, how many racers do we have (2-4)? ");
+totalRacers = parseInt(racer);
+  if (totalRacers > 4) {
+    racer = prompt("That's too many racers; lets keep it to less than 4 shall we? ");
+  }
+    else if (totalRacers < 2) {
+      racer = prompt("A race requires at least 2, lets add someone? ");
+    }
+
+for (i = 1; i <= totalRacers; i++) {
+  var contestant = prompt("Who is our #" + i + " contestant? ");
+  names.push(contestant);
+}
+
+
+for (i = 0; i < totalRacers; i++) {
+    var speed = prompt("How fast is " + names[i] + "? ")
+    var intSpeed = parseInt(speed);
+    speeds.push(intSpeed);
+
+    if (intSpeed > 10 || intSpeed < 1) {
+        var speed = prompt("That's not quite right, how about a number between 1-10?");
+        var intSpeed = parseInt(speed);
+        speeds.push(intSpeed);
+     }
+    
+    var focus = prompt("How focus are they on the the race (1-10? ");
+    var intFocus = parseInt(focus);
+    focuses.push(intFocus);
+
+    var intFocus = parseInt(intFocus);      
+        if (intFocus > 10|| intFocus < 1) {
+          var focus = prompt("That's not quite right, how about a number between 1-10?");
+          var intFocus = parseInt(focus);
+          focuses.push(intFocus);
+        }
+}
+
+console.log(names);
+console.log(speeds);
+console.log(focuses);
+
+//var rabbit = new Animal ("Rocky", 8, 3);
+
+for (i = 0; i < totalRacers; i++) {
+var test = new Racer (names[i], speeds[i], focuses[i]);
+wackyRacer.push(test);
+}
+console.log(wackyRacer);
+
+
+//Race
+
+</script>
