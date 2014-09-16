@@ -30,6 +30,7 @@
   alert ("Hello and welcome to the wonderful world of Wacky Racers!! Where you get to choose who races and just how good they are!! Lets meet the contestants shall we?");
   var racer = prompt("First off, how many racers do we have (2-4)? ");
   totalRacers = parseInt(racer);
+
   if (isNaN(totalRacers)) {
     racer = prompt("Getting ahead of yourself, need to know how many racers first.  How many do we have: ");
     totalRacers = parseInt(racer);
@@ -55,19 +56,19 @@ for (i = 0; i < totalRacers; i++) {
         var intSpeed = parseInt(speed);
         speeds.push(intSpeed);
      }
-    
+
     var focus = prompt("How focus is " + names[i] + " on the the race (1-10?) ");
     var intFocus = parseInt(focus);
     focuses.push(intFocus);
 
-    var intFocus = parseInt(intFocus);      
+    var intFocus = parseInt(intFocus);
         if (intFocus > 10|| intFocus < 1) {
           var focus = prompt("That's not quite right, how about a number between 1-10?");
           var intFocus = parseInt(focus);
           focuses.push(intFocus);
         }
-    var stats = new Racer (names[i], speeds[i], focuses[i]);
-    wackyRacer.push(stats);
+    var racer = new Racer (names[i], speeds[i], focuses[i]);
+    wackyRacer.push(racer);
 }
 
 //Race
@@ -75,7 +76,7 @@ while (leadingPosition < meters) {
   for (i = 0; i < wackyRacer.length; i++) {
 
     wackyRacer[i].advance();
-    
+
     if (wackyRacer[i].position > leadingPosition) {
       leadingPosition = wackyRacer[i].position;
       var winner = wackyRacer[i].name;
@@ -84,7 +85,7 @@ while (leadingPosition < meters) {
 }
 
 //Output
-prompt("And the winner is " + winner + "!!!!!!!!!!!");
+alert("And the winner is " + winner + "!!!!!!!!!!!");
 
 
 </script>
