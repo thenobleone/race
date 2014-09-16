@@ -6,6 +6,7 @@
   var focuses = [];
   var leadingPosition = 0;
   var meters = 100;
+  var standing = [];
 
   function Racer(name, speed, focus) {
     this.name = name;
@@ -22,13 +23,15 @@
       }
     }
     this.progressReport = function () {
-      return this.name + " is at: " + this.position
+      return this.name + " is at: " + this.position + "!"
     }
   }
 
 //Input
   alert ("Hello and welcome to the wonderful world of Wacky Racers!! Where you get to choose who races and just how good they are!! Lets meet the contestants shall we?");
   var racer = prompt("First off, how many racers do we have (2-4)? ");
+
+  //add a while loop
   totalRacers = parseInt(racer);
   if (isNaN(totalRacers)) {
     racer = prompt("Getting ahead of yourself, need to know how many racers first.  How many do we have: ");
@@ -68,13 +71,17 @@ for (i = 0; i < totalRacers; i++) {
         }
     var stats = new Racer (names[i], speeds[i], focuses[i]);
     wackyRacer.push(stats);
+
+    //wackyRacer.push(Racer (names[i], speeds[i], focuses[i]));
 }
 
 //Race
 while (leadingPosition < meters) {
   for (i = 0; i < wackyRacer.length; i++) {
 
-    wackyRacer[i].advance();
+    wackyRacer[i].advance(); 
+    var place = wackyRacer[i].progressReport;
+    standing.push(place);
     
     if (wackyRacer[i].position > leadingPosition) {
       leadingPosition = wackyRacer[i].position;
@@ -84,6 +91,7 @@ while (leadingPosition < meters) {
 }
 
 //Output
+alert(standing);
 prompt("And the winner is " + winner + "!!!!!!!!!!!");
 
 
